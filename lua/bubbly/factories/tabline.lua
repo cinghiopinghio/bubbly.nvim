@@ -26,7 +26,7 @@ return function()
       local buflist = vim.fn.tabpagebuflist(i)
       local winnr = vim.fn.tabpagewinnr(i)
       local bufnr = buflist[winnr]
-      local tabname = vim.fn.bufname(bufnr)
+      local tabname = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ':p:~:.')
       if tabname == '' then tabname = '[No Name]' end
       local color = this == i and settings.color.active or settings.color.inactive
       local style = this == i and settings.style.active or settings.style.inactive
